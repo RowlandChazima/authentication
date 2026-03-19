@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>User Dashboard</h1>
+    <p>Welcome! Use the form below to collect user data.</p>
+    <p><a href="login.html">Logout</a></p>
+
+    <hr />
+
+    <h2>Fill in User Details</h2>
+
+    <form action="dashboard.html" method="get">
+      <label for="firstName">First Name:</label><br />
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        placeholder="Enter first name"
+        required
+      /><br /><br />
+
+      <label for="lastName">Last Name:</label><br />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Enter last name"
+        required
+      /><br /><br />
+
+      <label for="age">Age:</label><br />
+      <input
+        type="number"
+        id="age"
+        name="age"
+        placeholder="Enter age"
+        min="1"
+        max="120"
+        required
+      /><br /><br />
+
+      <label for="gender">Gender:</label><br />
+      <select id="gender" name="gender">
+        <option value="">-- Select Gender --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+        <option value="prefer_not">Prefer not to say</option></select
+      ><br /><br />
+
+      <label for="profession">Profession:</label><br />
+      <input
+        type="text"
+        id="profession"
+        name="profession"
+        placeholder="Enter profession"
+      /><br /><br />
+
+      <label for="email">Email Address:</label><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter email"
+      /><br /><br />
+
+      <label for="phone">Phone Number:</label><br />
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="e.g. +254 700 000 000"
+      /><br /><br />
+
+      <label for="country">Country:</label><br />
+      <input
+        type="text"
+        id="country"
+        name="country"
+        placeholder="Enter country"
+      /><br /><br />
+
+      <label for="city">City:</label><br />
+      <input
+        type="text"
+        id="city"
+        name="city"
+        placeholder="Enter city"
+      /><br /><br />
+
+      <label for="bio">Short Bio:</label><br />
+      <textarea
+        id="bio"
+        name="bio"
+        rows="3"
+        cols="40"
+        placeholder="Write a short bio..."
+      ></textarea
+      ><br /><br />
+
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Clear Form" />
+    </form>
+
+    <hr />
+    <p>
+      <a href="register.html">Back to Register</a> |
+      <a href="login.html">Back to Login</a>
+    </p>
+  </body>
+</html>
