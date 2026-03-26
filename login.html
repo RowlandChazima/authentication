@@ -6,39 +6,65 @@
     <title>Login</title>
   </head>
   <body>
+    <style>
+      h1 {
+        font-weight: 700;
+        font-style: oblique 30deg;
+        text-align: center;
+      }
+
+      p {
+        font-style: italic;
+        text-align: center;
+        line-height: 1.8;
+        color: rgb(150, 138, 87);
+        font-size: 20px;
+      }
+    </style>
     <h1>Login to Your Account</h1>
     <p>Bienvenue! Please sign in to continue.</p>
 
     <hr />
+    <footer>
+      <style>
+        footer {
+          padding: 32px 24px;
+          text-align: center;
+          color: #443b3b;
+          font-weight: 400;
+        }
+      </style>
+      <h3>Login with Email</h3>
 
-    <h3>Login with Email</h3>
+      <form action="dashboard.html" method="get">
+        <label for="email">Email Address:</label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        /><br /><br />
 
-    <form action="dashboard.html" method="get">
-      <label for="email">Email Address:</label><br />
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter your email"
-        required
-      /><br /><br />
+        <label for="password">Password:</label><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        /><br /><br />
 
-      <label for="password">Password:</label><br />
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Enter your password"
-        required
-      /><br /><br />
+        <input type="checkbox" id="remember" name="remember" />
+        <label for="remember">Remember me</label><br /><br />
 
-      <input type="checkbox" id="remember" name="remember" />
-      <label for="remember">Remember me</label><br /><br />
+        <button type="submit" onsubmit="location.href = dashboard.html">
+          Login
+        </button>
+      </form>
 
-      <input type="submit" value="Login" />
-    </form>
-
-    <hr />
-    <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+      <hr />
+      <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+    </footer>
   </body>
 </html>

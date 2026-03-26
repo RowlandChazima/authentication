@@ -5,69 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <h1>Create an Account</h1>
-    <p>Please fill in the form below to register.</p>
+    <style>
+      h1 {
+        font-weight: 700;
+        font-style: oblique 30deg;
+        text-align: center;
+      }
 
-    <hr />
-    <!-- Registration form starts here -->
+      p {
+        font-style: italic;
+        text-align: center;
+        line-height: 1.8;
+        color: rgb(150, 138, 87);
+        font-size: 20px;
+      }
 
-    <form action="login.html" method="get">
-      <label for="firstName">First Name:</label><br />
+      #register {
+        text-align: center;
+        color: #443b3b;
+        font-weight: 400;
+      }
+    </style>
+    <footer>
+      <section id="register">
+        <h1>Create an Account</h1>
+        <p>Please fill in the form below to register.</p>
+        <hr />
+        <!-- Registration form starts here -->
 
-      <input
-        type="text"
-        id="firstName"
-        name="firstName"
-        placeholder="Eg. Mark"
-        required
-      /><br /><br />
+        <form action="login.html" method="get">
+          <label for="firstName">First Name:</label><br />
 
-      <!-- Last Name -->
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="Eg. Mark"
+            required
+          /><br /><br />
 
-      <label for="lastName">Last Name:</label><br />
+          <!-- Last Name -->
 
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        placeholder="Eg. Zuckerberg"
-        required
-      /><br /><br />
+          <label for="lastName">Last Name:</label><br />
 
-      <!-- Email -->
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Eg. Zuckerberg"
+            required
+          /><br /><br />
 
-      <label for="email">Email Address:</label><br />
+          <!-- Email -->
 
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Eg. mark.zuckerberg@example.com"
-        required
-      /><br /><br />
+          <label for="email">Email Address:</label><br />
 
-      <!-- Password -->
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Eg. mark.zuckerberg@example.com"
+            required
+          /><br /><br />
 
-      <label for="password">Password:</label><br />
+          <!-- Password -->
 
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Enter your password"
-        required
-      /><br /><br />
+          <label for="password">Password:</label><br />
 
-      <label for="confirmPassword">Confirm Password:</label><br />
-      <input
-        type="password"
-        id="confirmPassword"
-        name="confirmPassword"
-        placeholder="Confirm your password"
-        required
-      /><br /><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          /><br /><br />
 
-      <input type="submit" value="Register" />
-    </form>
+          <label for="confirmPassword">Confirm Password:</label><br />
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            required
+          /><br /><br />
+          <button type="submit" onsubmit="location.href = dashboard.html">
+            Register
+          </button>
+        </form>
+      </section>
+    </footer>
   </body>
 </html>
