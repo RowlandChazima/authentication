@@ -1,161 +1,319 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f5f2ee;
+      --card: #ffffff;
+      --ink: #1a1714;
+      --muted: #8a8278;
+      --accent: #c8a96e;
+      --accent-hover: #b59556;
+      --border: #e5e0d8;
+      --input-bg: #faf8f5;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 50%, rgba(200, 169, 110, 0.15), transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(0, 128, 128, 0.08), transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ── HEADER / NAV ── */
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-row {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-mark:hover {
+      transform: scale(1.02);
+    }
+
+    img {
+      border-radius: 8px;
+      margin-right: 0;
+    }
+
+    .logo-text {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* LOGIN BUTTON */
+    .btn-ghost {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--ink);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200, 169, 110, 0.05);
+    }
+
+    /* REGISTER BUTTON */
+    .btn-solid {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      background: var(--ink);
+      border-radius: 8px;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(26, 23, 20, 0.15);
+    }
+
+    .btn-solid:hover {
+      background: var(--accent);
+      box-shadow: 0 6px 16px rgba(200, 169, 110, 0.25);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 28px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
 
-      :root {
-        --bg: #f5f2ee;
-        --card: #ffffff;
-        --ink: #1a1714;
-        --muted: #8a8278;
-        --accent: #c8a96e;
-        --border: #e5e0d8;
-        --input-bg: #faf8f5;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      body {
-        min-height: 100vh;
-        background: var(--bg);
-        font-family: "DM Sans", sans-serif;
-        color: var(--ink);
-        display: flex;
-        flex-direction: column;
-      }
+    .hero-tag {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border);
+      padding: 10px 24px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      margin-bottom: 0;
+    }
 
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background:
-          radial-gradient(
-            ellipse 60% 50% at 20% 20%,
-            rgba(200, 169, 110, 0.09) 0%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse 40% 60% at 80% 80%,
-            rgba(200, 169, 110, 0.07) 0%,
-            transparent 70%
-          );
-        pointer-events: none;
-      }
+    em {
+      color: teal;
+      font-style: italic;
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
 
-      /* ── HEADER / NAV ── */
+    .hero-title {
+      font-size: clamp(40px, 6vw, 64px);
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 12px;
+    }
+
+    /* ── CTA BUTTONS ── */
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-primary {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--accent);
+      border-radius: 12px;
+      padding: 16px 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(200, 169, 110, 0.3);
+    }
+
+    .cta-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(200, 169, 110, 0.4);
+    }
+
+    .cta-secondary {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .cta-secondary:hover {
+      border-color: var(--ink);
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Responsive styling */
+    @media (max-width: 600px) {
       header {
-        background: var(--card);
-        border-bottom: 1px solid var(--border);
-        padding: 16px 48px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-
-      img {
-        margin-right: 20px;
-      }
-
-      .logo-row {
-        text-decoration: none;
-        gap: 10px;
-      }
-
-      .logo-text {
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        color: var(--muted);
-        text-transform: uppercase;
-        margin-bottom: 20px;
+        padding: 16px 24px;
       }
 
       .nav-links {
-        align-items: center;
-        gap: 12px;
-        display: flex;
+        display: none;
       }
 
-      /* LOGIN BUTTON */
-
-      .btn-ghost {
-        font-size: 13px;
-        font-weight: 500;
-        text-decoration: none;
-        color: var(--muted);
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        padding: 8px 18px;
-        transition:
-          border-color 0.2s,
-          color 0.2s;
+      .hero {
+        padding: 60px 20px;
       }
 
-      .btn-ghost:hover {
-        border-color: var(--accent);
-        color: var(--accent);
+      .cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
       }
 
-      /* REGISTER BUTTON */
-
-      .btn-solid {
-        font-size: 13px;
-        font-weight: 500;
-        color: #fff;
-        text-decoration: none;
-        background: var(--ink);
-        border-radius: 8px;
-        padding: 8px 18px;
-        transition: background 0.2s;
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
       }
+    }
+  </style>
+</head>
 
-      .btn-solid:hover {
-        background: #2d2925;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <a href="index.html" class="logo-row">
-        <div class="logo-mark">
-          <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
-          <span class="logo-text">Rowland's Webpage</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="login.html" class="btn-ghost">Login</a>
-        <a href="register.html" class="btn-solid">Register</a>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <span class="hero-tag">Welcome</span>
-
-      <h1 class="hero-title">
-        A place to<br /><em>register, login,</em><br />and explore.
-      </h1>
-
-      <p class="hero-sub">
-        Create your account, fill in your profile, and join a growing community
-        of people on Rowland's platform.
-      </p>
-
-      <div class="cta-group">
-        <a href="register.html" class="cta-primary">Create an Account →</a>
-        <a href="login.html" class="cta-secondary">I already have an account</a>
+<body>
+  <header>
+    <a href="index.html" class="logo-row">
+      <div class="logo-mark">
+        <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
+        <span class="logo-text">Rowland's Webpage</span>
       </div>
-    </section>
-  </body>
+    </a>
+
+    <nav class="nav-links">
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="register.html" class="btn-solid">Register</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="hero-tag">Welcome.<em>Bienvenue</em></span>
+
+    <h1 class="hero-title">
+      Feel free to login and register</h1>
+
+
+    <p class="hero-sub">
+      Create your account, fill in your profile, and join a growing community
+      of people on Rowland's platform.
+    </p>
+
+    <div class="cta-group">
+      <a href="register.html" class="cta-primary">Create an Account →</a>
+      <a href="login.html" class="cta-secondary">I already have an account</a>
+    </div>
+  </section>
+</body>
+
 </html>
