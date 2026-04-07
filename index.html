@@ -4,29 +4,158 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #f5f2ee;
+        --card: #ffffff;
+        --ink: #1a1714;
+        --muted: #8a8278;
+        --accent: #c8a96e;
+        --border: #e5e0d8;
+        --input-bg: #faf8f5;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg);
+        font-family: "DM Sans", sans-serif;
+        color: var(--ink);
+        display: flex;
+        flex-direction: column;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 20% 20%,
+            rgba(200, 169, 110, 0.09) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 60% at 80% 80%,
+            rgba(200, 169, 110, 0.07) 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+      }
+
+      /* ── HEADER / NAV ── */
+      header {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      img {
+        margin-right: 20px;
+      }
+
+      .logo-row {
+        text-decoration: none;
+        gap: 10px;
+      }
+
+      .logo-text {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .nav-links {
+        align-items: center;
+        gap: 12px;
+        display: flex;
+      }
+
+      /* LOGIN BUTTON */
+
+      .btn-ghost {
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--muted);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        padding: 8px 18px;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* REGISTER BUTTON */
+
+      .btn-solid {
+        font-size: 13px;
+        font-weight: 500;
+        color: #fff;
+        text-decoration: none;
+        background: var(--ink);
+        border-radius: 8px;
+        padding: 8px 18px;
+        transition: background 0.2s;
+      }
+
+      .btn-solid:hover {
+        background: #2d2925;
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to my webpage</h1>
-    <nav>
-      <img src="photos/my logo.webp" alt="Rowland Chazima" width="150" />
-      <ul>
-        <style>
-          ul {
-            list-style-type: none;
-            font-weight: 600;
-            text-decoration: underline;
-            font-style: italic;
-            display: flex;
-            gap: 20px;
-            text-align: center;
-            padding: 32px 24px;
-            color: #888888;
-          }
-        </style>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-      </ul>
-    </nav>
+    <header>
+      <a href="index.html" class="logo-row">
+        <div class="logo-mark">
+          <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
+          <span class="logo-text">Rowland's Webpage</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="login.html" class="btn-ghost">Login</a>
+        <a href="register.html" class="btn-solid">Register</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="hero-tag">Welcome</span>
+
+      <h1 class="hero-title">
+        A place to<br /><em>register, login,</em><br />and explore.
+      </h1>
+
+      <p class="hero-sub">
+        Create your account, fill in your profile, and join a growing community
+        of people on Rowland's platform.
+      </p>
+
+      <div class="cta-group">
+        <a href="register.html" class="cta-primary">Create an Account →</a>
+        <a href="login.html" class="cta-secondary">I already have an account</a>
+      </div>
+    </section>
   </body>
 </html>

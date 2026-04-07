@@ -1,6 +1,10 @@
-#hero h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 48px;
-  color: aquamarine;
-  margin-bottom: 20px;
-}
+ nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background-color: #8d99a1;
+            justify-content: space-between;
+          }
+
+          
