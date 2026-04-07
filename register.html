@@ -11,7 +11,6 @@
       }
 
  /* STYLING COLORS */
-
 :root {
   --bg: #f5f2ee;
   --card: #ffffff;
@@ -57,41 +56,26 @@ body::before {
 
 /* LOGO AND HEADING */
 
-img{
-  margin-right: 20px;
-  margin-bottom: 0px;
-}
+ .logo-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
 
-.logo.row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 32px;
+      .logo-mark {
+        margin-right: 20px;
+      }
 
-}
+      .text-logo {
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        font-size: 14px;
+      }
 
-.logo-mark {
-  place-items: center;
-  font-family: 'Fraunces' , serif;
-  color: var(--accent);
-  font-size: 16px;
-  border-radius: 8px; 
-  margin-bottom: 32px;
 
-}
-
-.logo-mark img {
-  width: 36px; height: 36px;
-}
-
-.text-logo {
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: 0.12em;
- 
-}
 
 .login-card {
   background: var(--card);
@@ -156,6 +140,10 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(200,169,110,0.12);
 }
 
+input::placeholder {
+  font-weight: 300;
+}
+
 
 /* BUTTON STYLING */
 
@@ -201,7 +189,8 @@ a {
       <div class="logo-row">
         <div class="logo-mark">
           <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
-          <span class="text-logo">Rowland's webpage</span>
+        </div>
+        <span class="text-logo">Rowland's webpage</span>
       </div>
 
         <!-- LOGIN CARD AND TEXT -->
