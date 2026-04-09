@@ -1,330 +1,321 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f5f2ee;
+      --card: #ffffff;
+      --ink: #1a1714;
+      --muted: #8a8278;
+      --accent: #c8a96e;
+      --border: #e5e0d8;
+      --input-bg: #faf8f5;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      padding: 24px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%,
+          rgba(200, 169, 110, 0.08) 0%,
+          transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 80%,
+          rgba(200, 169, 110, 0.06) 0%,
+          transparent 70%);
+      pointer-events: none;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 419px;
+      animation: fadeUp ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
 
-      :root {
-        --bg: #f5f2ee;
-        --card: #ffffff;
-        --ink: #1a1714;
-        --muted: #8a8278;
-        --accent: #c8a96e;
-        --border: #e5e0d8;
-        --input-bg: #faf8f5;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .logo-mark {
+      margin-right: 20px;
+    }
+
+    .logo-text {
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-title {
+      font-family: "Fraunces", serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    em {
+      color: var(--accent);
+    }
+
+    card-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
+    }
+
+    .remember-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .remember-row input[type="checkbox"] {
+      accent-color: var(--accent);
+      width: 14px;
+      height: 14px;
+    }
+
+    .remember-row span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--ink);
+      color: #fff;
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition:
+        background 0.2s,
+        transform 0.1s;
+    }
+
+    .btn:hover {
+      background: #2d2925;
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-note a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* MEDIA QUERIES-  RESPONSIVE */
+    /* TABLETS AND SMALL LAPTOPS */
+    @media (max-width: 768px) {
       body {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        font-family: "DM Sans", sans-serif;
-        background: var(--bg);
-        padding: 24px;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background:
-          radial-gradient(
-            ellipse 60% 50% at 20% 20%,
-            rgba(200, 169, 110, 0.08) 0%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse 40% 60% at 80% 80%,
-            rgba(200, 169, 110, 0.06) 0%,
-            transparent 70%
-          );
-        pointer-events: none;
-      }
-
-      .wrap {
-        width: 100%;
-        max-width: 419px;
-        animation: fadeUp ease both;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .logo-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 40px;
-      }
-
-      .logo-mark {
-        margin-right: 20px;
-      }
-
-      .logo-text {
-        text-transform: uppercase;
-        color: var(--muted);
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        font-size: 14px;
+        padding: 24px 16px;
       }
 
       .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 40px;
-        box-shadow: 0 2px 40px rgba(0, 0, 0, 0.06);
+        padding: 32px 16px;
+      }
+
+      .logo-row {
+        margin-bottom: 28px;
+      }
+    }
+
+    /*  MOBILE PHONES */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      .card {
+        padding: 24px 20px;
+        border-radius: 12px;
       }
 
       .card-title {
-        font-family: "Fraunces", serif;
-        font-size: 28px;
-        font-weight: 300;
-        color: var(--ink);
-        line-height: 1.2;
-        margin-bottom: 6px;
+        font-size: 24px;
       }
 
-      em {
-        color: var(--accent);
-      }
-
-      card-sub {
-        font-size: 14px;
-        color: var(--muted);
-        margin-bottom: 32px;
-        line-height: 1.5;
-      }
-
-      .divider {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+      .card-sub {
         margin-bottom: 24px;
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .divider::before,
-      .divider::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-      }
-
-      .field {
-        margin-bottom: 20px;
-      }
-
-      label {
-        display: block;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 8px;
-      }
-
-      input[type="email"],
-      input[type="password"] {
-        width: 100%;
-        padding: 12px 14px;
-        background: var(--input-bg);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 14px;
-        color: var(--ink);
-        outline: none;
-        transition:
-          border-color 0.2s,
-          box-shadow 0.2s;
-      }
-
-      input[type="email"]:focus,
-      input[type="password"]:focus {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
-      }
-
-      .remember-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 20px 0;
-      }
-
-      .remember-row input[type="checkbox"] {
-        accent-color: var(--accent);
-        width: 14px;
-        height: 14px;
-      }
-
-      .remember-row span {
         font-size: 13px;
-        color: var(--muted);
       }
 
       .btn {
-        width: 100%;
-        padding: 13px;
-        background: var(--ink);
-        color: #fff;
-        font-family: "DM Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        letter-spacing: 0.04em;
-        transition:
-          background 0.2s,
-          transform 0.1s;
-      }
-
-      .btn:hover {
-        background: #2d2925;
-      }
-      .btn:active {
-        transform: scale(0.99);
-      }
-
-      .footer-note {
-        text-align: center;
-        margin-top: 24px;
         font-size: 13px;
-        color: var(--muted);
+        padding: 12px;
       }
 
-      .footer-note a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
+      .field {
+        margin-bottom: 16px;
       }
+    }
+  </style>
+</head>
 
-      .footer-note a:hover {
-        text-decoration: underline;
-      }
-
-      /* MEDIA QUERIES-  RESPONSIVE */
-      /* TABLETS AND SMALL LAPTOPS */
-      @media (max-width: 768px) {
-        body {
-          padding: 24px 16px;
-        }
-
-        .card {
-          padding: 32px 16px;
-        }
-
-        .logo-row {
-          margin-bottom: 28px;
-        }
-      }
-
-      /*  MOBILE PHONES */
-      @media (max-width: 480px) {
-        body {
-          padding: 16px 12px;
-        }
-
-        .card {
-          padding: 24px 20px;
-          border-radius: 12px;
-        }
-
-        .card-title {
-          font-size: 24px;
-        }
-
-        .card-sub {
-          margin-bottom: 24px;
-          font-size: 13px;
-        }
-
-        .btn {
-          font-size: 13px;
-          padding: 12px;
-        }
-
-        .field {
-          margin-bottom: 16px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="logo-row">
-        <div class="logo-mark">
-          <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
-        </div>
-        <span class="logo-text">Rowland's Webpage</span>
+<body>
+  <div class="wrap">
+    <div class="logo-row">
+      <div class="logo-mark">
+        <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
       </div>
-
-      <div class="card">
-        <h1 class="card-title">Welcome <em>back.</em></h1>
-        <p class="card-sub">Bienvenue! Please sign in to continue.</p>
-
-        <div class="divider">sign in with email</div>
-
-        <form action="dashboard.html" method="get">
-          <div class="field">
-            <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-
-          <div class="field">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-
-          <div class="remember-row">
-            <input type="checkbox" id="remember" name="remember" />
-            <span>Remember me</span>
-          </div>
-
-          <button class="btn" type="submit">Login →</button>
-        </form>
-
-        <p class="footer-note">
-          Don't have an account? <a href="register.html">Register here</a>.
-        </p>
-      </div>
+      <span class="logo-text">Rowland's Webpage</span>
     </div>
-  </body>
+
+    <div class="card">
+      <h1 class="card-title">Welcome <em>back.</em></h1>
+      <p class="card-sub">Bienvenue! Please sign in to continue.</p>
+
+      <div class="divider">sign in with email</div>
+
+      <form action="dashboard.html" method="get">
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        </div>
+
+        <div class="remember-row">
+          <input type="checkbox" id="remember" name="remember" />
+          <span>Remember me</span>
+        </div>
+
+        <button class="btn" type="submit">Login →</button>
+      </form>
+
+      <p class="footer-note">
+        Don't have an account? <a href="register.html">Register here</a>.
+      </p>
+    </div>
+  </div>
+</body>
+
 </html>

@@ -1,283 +1,269 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
 
- /* STYLING COLORS */
-:root {
-  --bg: #f5f2ee;
-  --card: #ffffff;
-  --ink: #1a1714;
-  --muted: #8a8278;
-  --accent: #c8a96e;
-  --border: #e5e0d8;
-  --input-bg: #faf8f5;
-}
- 
-/* BODY STYLING */
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  min-height: 100vh;
-  background: var(--bg);
-  display: grid;
-  place-items: center;
-  font-family: 'DM Sans', sans-serif;
-  padding: 24px;
-}
+    /* STYLING COLORS */
+    :root {
+      --bg: #f5f2ee;
+      --card: #ffffff;
+      --ink: #1a1714;
+      --muted: #8a8278;
+      --accent: #c8a96e;
+      --border: #e5e0d8;
+      --input-bg: #faf8f5;
+    }
 
-body::before {
+    /* BODY STYLING */
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      font-family: 'DM Sans', sans-serif;
+      padding: 24px;
+    }
+
+    body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: 
-        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(200,169,110,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(200,169,110,0.06) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(200, 169, 110, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(200, 169, 110, 0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
-.wrap {
-  width: 100%;
-  max-width: 460px;
-  padding: 24px 0;
-  animation: fadeUp 0.6s ease both;
-}
+    .wrap {
+      width: 100%;
+      max-width: 460px;
+      padding: 24px 0;
+      animation: fadeUp 0.6s ease both;
+    }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px);}
-  to { opacity: 1; transform: translateY(0);}
-}
-
-/* LOGO AND HEADING */
-
- .logo-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 40px;
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
 
-      .logo-mark {
-        margin-right: 20px;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      .text-logo {
-        text-transform: uppercase;
-        color: var(--muted);
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        font-size: 14px;
-      }
+    /* LOGO AND HEADING */
 
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
 
+    .logo-mark {
+      margin-right: 20px;
+    }
 
-.login-card {
-  background: var(--card);
-  padding: 40px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 40px rgba(0,0,0,0.06);
-}
-
-.card-title {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  color: var(--ink);
-  margin-bottom: 6px;
-  font-weight: 300;
-}
-
-.card-title em{
-  font-style: italic;
-  color: var(--accent);
-}
-
-.subtitle {
-  font-size: 13.5px;
-  color: var(--muted);
-  margin-bottom: 28px;
- }
-
- .field {
-  margin-bottom: 18px;
- }
-
- /* LABEL STYLING */
-
- label {
-  display: block;
-  font-size: 11px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 7px;
-  letter-spacing: 0.1em;
-  font-weight: 500;
- }
-
- /* INPUT STYLING */
-
- input {
-  width: 100%;
-  background: var(--input-bg);
-  padding: 12px 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: var(--ink);
-  outline: none;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s, box-shadow 0.2s;
- }
-
-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(200,169,110,0.12);
-}
-
-input::placeholder {
-  font-weight: 300;
-}
+    .text-logo {
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+    }
 
 
-/* BUTTON STYLING */
 
-button {
-  background-color: var(--ink);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  width: 100%;
-  margin-top: 8px;
-  padding: 13px;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-}
+    .login-card {
+      background: var(--card);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.06);
+    }
 
-button:hover {
-  background: #2d2925;
-}
-button:active {
-  transform: scale(0.99);
-}
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      color: var(--ink);
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
 
-.footer-note {
-  margin-top:20px;
-  font-size: 13px;
-  text-align: center;
-  color: var(--muted);
-}
+    .card-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
-a {
-  text-decoration: none;
-  font-weight: 500;
-  color: var(--accent);
-}
- a:hover{
-  text-decoration: underline;
-}
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="logo-row">
-        <div class="logo-mark">
-          <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
-        </div>
-        <span class="text-logo">Rowland's webpage</span>
+    .subtitle {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    /* LABEL STYLING */
+
+    label {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    /* INPUT STYLING */
+
+    input {
+      width: 100%;
+      background: var(--input-bg);
+      padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
+    }
+
+    input::placeholder {
+      font-weight: 300;
+    }
+
+
+    /* BUTTON STYLING */
+
+    button {
+      background-color: var(--ink);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      width: 100%;
+      margin-top: 8px;
+      padding: 13px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2d2925;
+    }
+
+    button:active {
+      transform: scale(0.99);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="logo-row">
+      <div class="logo-mark">
+        <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
       </div>
+      <span class="text-logo">Rowland's webpage</span>
+    </div>
 
-        <!-- LOGIN CARD AND TEXT -->
+    <!-- LOGIN CARD AND TEXT -->
 
-        <div class="login-card">
-          <h1 class="card-title">Create an <em>Account</em></h1>
-          <p class="subtitle">Please fill in the form below to register.</p>
-        
+    <div class="login-card">
+      <h1 class="card-title">Create an <em>Account</em></h1>
+      <p class="subtitle">Please fill in the form below to register.</p>
+
 
       <!-- Registration form starts here -->
 
       <form action="login.html" method="get">
         <div class="field">
-          <label for="firstName">First Name:</label>
+          <label for="firstName">First Name</label>
           <div class="input">
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="Eg. Mark"
-              required
-          /><br /><br />
-        </div>
-        
-
-        <!-- Last Name -->
-
-        <div class="field">
-          <label for="lastName">Last Name:</label>
-          
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Eg. Zuckerberg"
-              required
-            />
-        </div>
-
-        <!-- Email -->
-
-        <div class="field">
-          <label for="email">Email Address:</label>
-          
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Eg. mark.zuckerberg@example.com"
-              required
-            />
-        </div>
-
-        <!-- Password -->
-
-        <div class="field">
-          <label for="password">Password:</label>
-          <div class="input-wrap">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              required
-            /></br/><br/>
+            <input type="text" id="firstName" name="firstName" placeholder="Eg. Mark" required /><br /><br />
           </div>
-       
 
-        <div class="field">
-          <label for="confirmPassword">Confirm Password:</label>
-         
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm your password"
-              required
-             />
-        </div>
 
-        <button type="submit" onclick="location.href = 'dashboard.html'">Create Account →
-          
-         </button>
+          <!-- Last Name -->
+
+          <div class="field">
+            <label for="lastName">Last Name</label>
+
+            <input type="text" id="lastName" name="lastName" placeholder="Eg. Zuckerberg" required />
+          </div>
+
+          <!-- Email -->
+
+          <div class="field">
+            <label for="email">Email Address</label>
+
+            <input type="email" id="email" name="email" placeholder="Eg. mark.zuckerberg@example.com" required />
+          </div>
+
+          <!-- Password -->
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <input type="password" id="password" name="password" placeholder="Enter your password"
+                required /></br /><br />
+            </div>
+
+
+            <div class="field">
+              <label for="confirmPassword">Confirm Password</label>
+
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
+                required />
+            </div>
+
+            <button type="submit" onclick="location.href = 'dashboard.html'">Create Account →
+
+            </button>
       </form>
       <p class="footer-note">Already have an account? <a href="login.html">Login here</a></p>
-     </div>
-   </div>
-   
-  </body>
+    </div>
+  </div>
+
+</body>
+
 </html>
