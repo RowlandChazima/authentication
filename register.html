@@ -1,4 +1,4 @@
-!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -7,265 +7,265 @@
    <link rel="stylesheet" href="output.css" />
    <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* STYLING COLORS */
-    :root {
-      --bg: #f5f2ee;
-      --card: #ffffff;
-      --ink: #1a1714;
-      --muted: #8a8278;
-      --accent: #c8a96e;
-      --border: #e5e0d8;
-      --input-bg: #faf8f5;
-    }
-
-    /* BODY STYLING */
-
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      display: grid;
-      place-items: center;
-      font-family: 'DM Sans', sans-serif;
-      padding: 24px;
-    }
-
-    body::before {
-      content: '';
+     body::before {
+      content: "";
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(200, 169, 110, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(200, 169, 110, 0.06) 0%, transparent 70%);
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(200,169,110,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(200,169,110,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    .wrap {
-      width: 100%;
-      max-width: 460px;
-      padding: 24px 0;
-      animation: fadeUp 0.6s ease both;
+.logo-mark {
+      transition: transform 0.3s ease;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .logo-mark:hover {
+      transform: rotate(10deg) scale(1.1);
     }
 
-    /* LOGO AND HEADING */
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-
-    .logo-mark {
-      margin-right: 20px;
-    }
-
-    .text-logo {
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      font-size: 14px;
-    }
+    em { color: #c8a96e;  }
 
 
 
-    .login-card {
-      background: var(--card);
-      padding: 40px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.06);
-    }
-
-    .card-title {
-      font-family: 'Fraunces', serif;
-      font-size: 24px;
-      color: var(--ink);
-      margin-bottom: 6px;
-      font-weight: 300;
-    }
-
-    .card-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      font-size: 13.5px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .field {
-      margin-bottom: 18px;
-    }
-
-    /* LABEL STYLING */
-
-    label {
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 7px;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-    }
-
-    /* INPUT STYLING */
-
-    input {
-      width: 100%;
-      background: var(--input-bg);
-      padding: 12px 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--ink);
-      outline: none;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
-    }
-
-    input::placeholder {
-      font-weight: 300;
-    }
-
-
+    /* FADE UP ANIMATION */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .wrap { animation: fadeUp 0.6s ease both; }
+    
     /* BUTTON STYLING */
 
-    button {
-      background-color: var(--ink);
+.btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--color-ink);
       color: #fff;
-      font-family: 'DM Sans', sans-serif;
+      font-family: "DM Sans", sans-serif;
       font-size: 14px;
       font-weight: 500;
-      width: 100%;
-      margin-top: 8px;
-      padding: 13px;
-      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+      letter-spacing: 0.04em;
+      transition:
+        background 0.2s,
+        transform 0.1s;
     }
 
-    button:hover {
+    .btn:hover {
       background: #2d2925;
     }
 
-    button:active {
+    .btn:active {
       transform: scale(0.99);
     }
 
+b
     .footer-note {
       margin-top: 20px;
       font-size: 13px;
       text-align: center;
-      color: var(--muted);
+      color: var(--color-muted);
     }
 
-    a {
-      text-decoration: none;
-      font-weight: 500;
-      color: var(--accent);
+/* HAMBURGER-MOBILE */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 4px;
+      z-index: 100;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: #333;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
     }
-  </style>
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+ /* Responsive styling */
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 24px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 260px;
+        height: 100vh;
+        background: var(--color-card);
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 24px 24px;
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+        transition: right 0.4s ease;
+        z-index: 90;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links .btn-ghost,
+      .nav-links .btn-solid {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+</style>
 </head>
 
-<body>
-  <div class="wrap">
-    <div class="logo-row">
-      <div class="logo-mark">
-        <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
-      </div>
-      <span class="text-logo">Rowland's webpage</span>
-    </div>
+<body class="min-h-screen bg-bg flex flex-col font-sans overflow-x-hidden">
+  <header
+      class="bg-white/80 backdrop-blur-md border-b border-border px-12 py-4 flex items-center justify-between sticky top-0 z-10"
+    >
+      <a href="index.html" class="no-underline flex items-center">
+        <div class="logo-mark flex items-center gap-3">
+          <img
+            src="photos/my logo.webp"
+            alt="Rowland Chazima"
+            width="40"
+            class="rounded-lg"
+          />
+          <span
+            class="text-[13px] font-bold tracking-[0.15em] text-ink uppercase"
+            >Rowland's webpage</span
+          >
+        </div>
+      </a>
+
+      <nav class="nav-links flex items-center gap-4" id="navLinks">
+        <a
+          href="login.html"
+          class="btn-ghost text-[14px] font-semibold no-underline text-ink rounded-lg border border-border px-5 py-[10px] transition-all duration-300 bg-transparent"
+          >Login</a
+        >
+        <a
+          href="register.html"
+          class="btn-solid text-[14px] font-semibold text-white no-underline bg-ink rounded-lg px-5 py-[10px] transition-all duration-300 shadow-[0_4px_12px_rgba(26,23,20,0.15)]"
+          >Register</a
+        >
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
 
     <!-- LOGIN CARD AND TEXT -->
 
-    <div class="login-card">
-      <h1 class="card-title">Create an <em>Account</em></h1>
-      <p class="subtitle">Please fill in the form below to register.</p>
+    <div class="login-card wrap w-full max-w-[460px] mx-auto my-auto px-4 py-6">
+     <div class="bg-white p-10 rounded-2xl border border-border shadow-[0_2px_40px_rgba(0,0,0,0.06)]"></div>
+        <h1 class="card-title font-serif text-[24px] font-light text-ink mb-[6px]">Create an <em>Account</em></h1>
+        <p class="subtitle text-[13.5px] text-muted mb-7 ">Please fill in the form below to register.</p>
 
 
       <!-- Registration form starts here -->
 
       <form action="login.html" method="get">
-        <div class="field">
-          <label for="firstName">First Name</label>
-          <div class="input">
-            <input type="text" id="firstName" name="firstName" placeholder="Eg. Mark" required /><br /><br />
+
+        <div class="field mb-[18px]">
+          <label for="firstName" class="block text-[11px] uppercase tracking-[0.1em] text-muted mb-[7px] font-medium ">First Name</label>
+          
+            <input type="text" id="firstName" name="firstName" placeholder="Eg. Mark" required  class="w-full bg-input-bg px-[14px] py-3 font-sans text-[14px] text-ink rounded-lg border border-border transition-all duration-200"/><br /><br />
           </div>
 
 
           <!-- Last Name -->
 
-          <div class="field">
-            <label for="lastName">Last Name</label>
+          <div class="field mb-[18px]">
+            <label for="lastName" class="block text-[11px] uppercase tracking-[0.1em] text-muted mb-[7px] font-medium ">Last Name</label>
 
-            <input type="text" id="lastName" name="lastName" placeholder="Eg. Zuckerberg" required />
+            <input type="text" id="lastName" name="lastName" placeholder="Eg. Zuckerberg" required  class="w-full bg-input-bg px-[14px] py-3 font-sans text-[14px] text-ink rounded-lg border border-border transition-all duration-200"/>
           </div>
 
           <!-- Email -->
 
-          <div class="field">
-            <label for="email">Email Address</label>
-
-            <input type="email" id="email" name="email" placeholder="Eg. mark.zuckerberg@example.com" required />
+          <div class="field mb-[18px]">
+            <label for="email" class="block text-[11px] uppercase tracking-[0.1em] text-muted mb-[7px] font-medium ">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Eg. mark.zuckerberg@example.com" required  class="w-full bg-input-bg px-[14px] py-3 font-sans text-[14px] text-ink rounded-lg border border-border transition-all duration-200"/>
           </div>
 
           <!-- Password -->
 
-          <div class="field">
-            <label for="password">Password</label>
-            <div class="input-wrap">
+          <div class="field mb-[18px] ">
+            <label for="password" class="block text-[11px] uppercase tracking-[0.1em] text-muted mb-[7px] font-medium ">Password</label>
+            
               <input type="password" id="password" name="password" placeholder="Enter your password"
-                required /></br /><br />
+                required  class="w-full bg-input-bg px-[14px] py-3 font-sans text-[14px] text-ink rounded-lg border border-border transition-all duration-200"/></br /><br />
             </div>
 
 
-            <div class="field">
-              <label for="confirmPassword">Confirm Password</label>
+            <div class="field mb-[18px]">
+              <label for="confirmPassword" class="block text-[11px] uppercase tracking-[0.1em] text-muted mb-[7px] font-medium ">Confirm Password</label>
 
               <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
-                required />
+                required  class="w-full bg-input-bg px-[14px] py-3 font-sans text-[14px] text-ink rounded-lg border border-border transition-all duration-200"/>
             </div>
 
-            <button type="submit" onclick="location.href = 'dashboard.html'">Create Account →
+            <button type="submit" onclick="location.href = 'dashboard.html'"  class="btn" >Create Account →
 
             </button>
+           
       </form>
-      <p class="footer-note">Already have an account? <a href="login.html">Login here</a></p>
+      <p class="footer-note mt-5 text-[13px] text-center text-muted">Already have an account? <a href="login.html" class="text-accent no-underline font-medium hover:underline">Login here</a></p>
     </div>
   </div>
 
+
+  <!-- JAVASCRIPT -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+    </script>
 </body>
 
 </html>

@@ -90,11 +90,22 @@
     }
 
     /* HAMBURGER-MOBILE */
-    .nav-links {
-      transition: right 0.3s ease;
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 4px;
+      z-index: 100;
     }
 
     .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: #333;
       transition:
         transform 0.3s ease,
         opacity 0.3s ease;
@@ -110,6 +121,59 @@
 
     .hamburger.active span:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 24px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 260px;
+        height: 100vh;
+        background: var(--color-card);
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 24px 24px;
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+        transition: right 0.4s ease;
+        z-index: 90;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links .btn-ghost,
+      .nav-links .btn-solid {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
   <body
@@ -147,14 +211,10 @@
         >
       </nav>
 
-      <button
-        class="hamburger hidden flex-col gap-1.5 cursor-pointer bg-transparent border-none p-1 z-[100]"
-        id="hamburger"
-        aria-label="Toggle menu"
-      >
-        <span class="w-6 h-[2px] bg-ink"></span>
-        <span class="w-6 h-[2px] bg-ink"></span>
-        <span class="w-6 h-[2px] bg-ink"></span>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </header>
 
@@ -197,53 +257,11 @@
     <!-- JAVASCRIPT -->
     <script>
       const hamburger = document.getElementById("hamburger");
-      const navLinks = document.getElementById("navLinks");
+      const navLinks = document.querySelector(".nav-links");
+
       hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
         hamburger.classList.toggle("active");
-      });
-
-      // HELL OF A MEDIA QUERY
-      const mq = matchMedia("(max-width: 768px)");
-      function applyMobileMenu(e) {
-        if (e.matches) {
-          hamburger.style.display = "block";
-          Object.assign(navLinks.style, {
-            position: "fixed",
-            top: 0,
-            right: "-100%",
-            width: "260px",
-            height: "100vh",
-            background: "#fff",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "80px 24px 24px",
-            boxShadow: "-4px 0 15px rgba(0,0,0,0.05)",
-            zIndex: "90",
-          });
-
-          nav -
-            links.querySelectorAll("a").forEach((a) => {
-              a.style.width = "100%";
-              a.style.textAlign = "center";
-              a.style.padding = "15px 20px";
-            });
-        } else {
-          hamburger.style.display = "none";
-          navLinks.removeAttribute("style");
-          navLinks.querySelectorAll("a").forEach((a) => {
-            a.removeAttribute("style");
-          });
-        }
-      }
-      mq.addEventListener("change", applyMobile);
-      applyMobile(mq);
-
-      navLinks.classList.contains("active") && (navLinks.style.right = "0");
-      hamburger.addEventListener("click", () => {
-        navLinks.style.right = navLinks.classList.contains("active")
-          ? "0"
-          : "-100%";
+        navLinks.classList.toggle("active");
       });
     </script>
   </body>
