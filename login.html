@@ -1,321 +1,515 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="output.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #f5f2ee;
-      --card: #ffffff;
-      --ink: #1a1714;
-      --muted: #8a8278;
-      --accent: #c8a96e;
-      --border: #e5e0d8;
-      --input-bg: #faf8f5;
-    }
-
-    body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family: "DM Sans", sans-serif;
-      background: var(--bg);
-      padding: 24px;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 20% 20%,
-          rgba(200, 169, 110, 0.08) 0%,
-          transparent 70%),
-        radial-gradient(ellipse 40% 60% at 80% 80%,
-          rgba(200, 169, 110, 0.06) 0%,
-          transparent 70%);
-      pointer-events: none;
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 419px;
-      animation: fadeUp ease both;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      :root {
+        --bg: #f5f2ee;
+        --card: #ffffff;
+        --ink: #1a1714;
+        --muted: #8a8278;
+        --accent: #c8a96e;
+        --border: #e5e0d8;
+        --input-bg: #faf8f5;
       }
-    }
 
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-
-    .logo-mark {
-      margin-right: 20px;
-    }
-
-    .logo-text {
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      font-size: 14px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.06);
-    }
-
-    .card-title {
-      font-family: "Fraunces", serif;
-      font-size: 28px;
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
-
-    em {
-      color: var(--accent);
-    }
-
-    card-sub {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 32px;
-      line-height: 1.5;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 10px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .field {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px 14px;
-      background: var(--input-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: "DM Sans", sans-serif;
-      font-size: 14px;
-      color: var(--ink);
-      outline: none;
-      transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-    }
-
-    input[type="email"]:focus,
-    input[type="password"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
-    }
-
-    .remember-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 20px 0;
-    }
-
-    .remember-row input[type="checkbox"] {
-      accent-color: var(--accent);
-      width: 14px;
-      height: 14px;
-    }
-
-    .remember-row span {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .btn {
-      width: 100%;
-      padding: 13px;
-      background: var(--ink);
-      color: #fff;
-      font-family: "DM Sans", sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      letter-spacing: 0.04em;
-      transition:
-        background 0.2s,
-        transform 0.1s;
-    }
-
-    .btn:hover {
-      background: #2d2925;
-    }
-
-    .btn:active {
-      transform: scale(0.99);
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .footer-note a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer-note a:hover {
-      text-decoration: underline;
-    }
-
-    /* MEDIA QUERIES-  RESPONSIVE */
-    /* TABLETS AND SMALL LAPTOPS */
-    @media (max-width: 768px) {
       body {
-        padding: 24px 16px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        overflow-x: hidden;
       }
 
-      .card {
-        padding: 32px 16px;
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 20% 20%,
+            rgba(200, 169, 110, 0.08) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 60% at 80% 80%,
+            rgba(200, 169, 110, 0.06) 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .header-logo-row {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .header-logo-mark {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      .header-logo-mark:hover {
+        transform: scale(1.02);
+      }
+
+      header img {
+        border-radius: 8px;
+        margin-right: 0;
+      }
+
+      .header-logo-text {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: var(--ink);
+        text-transform: uppercase;
+        margin-bottom: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .nav-links .btn-ghost {
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--ink);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        background: transparent;
+      }
+
+      .nav-links .btn-ghost:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(200, 169, 110, 0.05);
+      }
+
+      .nav-links .btn-solid {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        background: var(--ink);
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(26, 23, 20, 0.15);
+      }
+
+      .nav-links .btn-solid:hover {
+        background: var(--accent);
+        box-shadow: 0 6px 16px rgba(200, 169, 110, 0.25);
+        transform: translateY(-1px);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 4px;
+        z-index: 100;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: var(--ink);
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 419px;
+        margin: auto;
+        padding: 24px;
+        animation: fadeUp ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .logo-row {
-        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
       }
-    }
 
-    /*  MOBILE PHONES */
-    @media (max-width: 480px) {
-      body {
-        padding: 16px 12px;
+      .logo-mark {
+        margin-right: 20px;
+      }
+
+      .logo-text {
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        font-size: 14px;
       }
 
       .card {
-        padding: 24px 20px;
-        border-radius: 12px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 2px 40px rgba(0, 0, 0, 0.06);
       }
 
       .card-title {
-        font-size: 24px;
+        font-family: "Fraunces", serif;
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.2;
+        margin-bottom: 6px;
       }
 
-      .card-sub {
+      em {
+        color: var(--accent);
+      }
+
+      card-sub {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 32px;
+        line-height: 1.5;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         margin-bottom: 24px;
-        font-size: 13px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 10px;
       }
 
-      .btn {
-        font-size: 13px;
-        padding: 12px;
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
       }
 
       .field {
-        margin-bottom: 16px;
+        margin-bottom: 20px;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="wrap">
-    <div class="logo-row">
-      <div class="logo-mark">
-        <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
+      label {
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 14px;
+        background: var(--input-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        color: var(--ink);
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
+      }
+
+      .remember-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 20px 0;
+      }
+
+      .remember-row input[type="checkbox"] {
+        accent-color: var(--accent);
+        width: 14px;
+        height: 14px;
+      }
+
+      .remember-row span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .btn {
+        width: 100%;
+        padding: 13px;
+        background: var(--ink);
+        color: #fff;
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        letter-spacing: 0.04em;
+        transition:
+          background 0.2s,
+          transform 0.1s;
+      }
+
+      .btn:hover {
+        background: #2d2925;
+      }
+
+      .btn:active {
+        transform: scale(0.99);
+      }
+
+      .footer-note {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .footer-note a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .footer-note a:hover {
+        text-decoration: underline;
+      }
+
+      /* MEDIA QUERIES-  RESPONSIVE */
+      /* TABLETS AND SMALL LAPTOPS */
+      @media (max-width: 768px) {
+        header {
+          padding: 16px 24px;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 260px;
+          height: 100vh;
+          background: var(--card);
+          flex-direction: column;
+          justify-content: center;
+          padding: 80px 24px 24px;
+          box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+          transition: right 0.4s ease;
+          z-index: 90;
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links .btn-ghost,
+        .nav-links .btn-solid {
+          width: 100%;
+          text-align: center;
+          padding: 14px 20px;
+        }
+
+        .wrap {
+          padding: 24px 16px;
+        }
+
+        .card {
+          padding: 32px 16px;
+        }
+
+        .logo-row {
+          margin-bottom: 28px;
+        }
+      }
+
+      /*  MOBILE PHONES */
+      @media (max-width: 480px) {
+        .wrap {
+          padding: 16px 12px;
+        }
+
+        .card {
+          padding: 24px 20px;
+          border-radius: 12px;
+        }
+
+        .card-title {
+          font-size: 24px;
+        }
+
+        .card-sub {
+          margin-bottom: 24px;
+          font-size: 13px;
+        }
+
+        .btn {
+          font-size: 13px;
+          padding: 12px;
+        }
+
+        .field {
+          margin-bottom: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html" class="header-logo-row">
+        <div class="header-logo-mark">
+          <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
+          <span class="header-logo-text">Rowland's Webpage</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="login.html" class="btn-ghost">Login</a>
+        <a href="register.html" class="btn-solid">Register</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <div class="wrap">
+      <div class="card">
+        <h1 class="card-title">Welcome <em>back.</em></h1>
+        <p class="card-sub">Bienvenue! Please sign in to continue.</p>
+
+        <div class="divider">sign in with email</div>
+
+        <form action="dashboard.html" method="get">
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div class="remember-row">
+            <input type="checkbox" id="remember" name="remember" />
+            <span>Remember me</span>
+          </div>
+
+          <button class="btn" type="submit">Login →</button>
+        </form>
+
+        <p class="footer-note">
+          Don't have an account? <a href="register.html">Register here</a>.
+        </p>
       </div>
-      <span class="logo-text">Rowland's Webpage</span>
     </div>
 
-    <div class="card">
-      <h1 class="card-title">Welcome <em>back.</em></h1>
-      <p class="card-sub">Bienvenue! Please sign in to continue.</p>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
 
-      <div class="divider">sign in with email</div>
-
-      <form action="dashboard.html" method="get">
-        <div class="field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required />
-        </div>
-
-        <div class="field">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required />
-        </div>
-
-        <div class="remember-row">
-          <input type="checkbox" id="remember" name="remember" />
-          <span>Remember me</span>
-        </div>
-
-        <button class="btn" type="submit">Login →</button>
-      </form>
-
-      <p class="footer-note">
-        Don't have an account? <a href="register.html">Register here</a>.
-      </p>
-    </div>
-  </div>
-</body>
-
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>

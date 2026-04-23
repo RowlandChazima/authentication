@@ -1,122 +1,102 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.google.com" />
+    <link rel="stylesheet" href="output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Register</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap');
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #f5f2ee;
-      --card: #ffffff;
-      --ink: #1a1714;
-      --muted: #8a8278;
-      --accent: #c8a96e;
-      --accent-hover: #b59556;
-      --border: #e5e0d8;
-      --input-bg: #faf8f5;
-    }
-
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      font-family: "DM Sans", sans-serif;
-      color: var(--ink);
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at 15% 50%, rgba(200, 169, 110, 0.15), transparent 50%),
-        radial-gradient(circle at 85% 30%, rgba(0, 128, 128, 0.08), transparent 50%);
+        radial-gradient(
+          circle at 15% 50%,
+          rgba(200, 169, 110, 0.15),
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 85% 50%,
+          rgba(0, 128, 128, 0.08) 0%,
+          transparent 50%
+        );
       pointer-events: none;
       z-index: -1;
     }
 
-    /* ── HEADER / NAV ── */
-    header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo-row {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
     .logo-mark {
-      display: flex;
-      align-items: center;
-      gap: 12px;
       transition: transform 0.3s ease;
     }
 
     .logo-mark:hover {
-      transform: scale(1.02);
+      transform: rotate(10deg) scale(1.1);
     }
 
-    img {
-      border-radius: 8px;
-      margin-right: 0;
+    .btn-solid:hover {
+      background-color: var(--color-accent);
+      box-shadow: 0 6px 16px rgba(200, 169, 110, 0.25);
+      transform: translateY(-1px);
     }
 
-    .logo-text {
-      font-size: 13px;
+    .btn-ghost:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(200, 169, 110, 0.05);
+    }
+
+    em {
+      color: teal;
+      font-family: "Fraunces", serif;
       font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--ink);
-      text-transform: uppercase;
-      margin-bottom: 0;
+      font-size: 18px;
     }
 
+    .cta-primary:hover {
+      background-color: var(--color-accent-hover);
+      box-shadow: 0 12px 28px rgba(200, 169, 110, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .cta-secondary:hover {
+      border-color: var(--color-ink);
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-3px);
+    }
+
+    /*  ANIMATIONS*/
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    .hero {
+      animation: fadeIn 1s ease-out;
+    }
+
+    /* HAMBURGER-MOBILE */
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      padding: 4px;
-      z-index: 100;
+      transition: right 0.3s ease;
     }
 
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background-color: var(--ink);
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -130,263 +110,140 @@
     .hamburger.active span:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
-
-    /* LOGIN BUTTON */
-    .btn-ghost {
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      color: var(--ink);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      padding: 10px 20px;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(200, 169, 110, 0.05);
-    }
-
-    /* REGISTER BUTTON */
-    .btn-solid {
-      font-size: 14px;
-      font-weight: 600;
-      color: #fff;
-      text-decoration: none;
-      background: var(--ink);
-      border-radius: 8px;
-      padding: 10px 20px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(26, 23, 20, 0.15);
-    }
-
-    .btn-solid:hover {
-      background: var(--accent);
-      box-shadow: 0 6px 16px rgba(200, 169, 110, 0.25);
-      transform: translateY(-1px);
-    }
-
-    /* ── HERO SECTION ── */
-    .hero {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-grow: 1;
-      padding: 80px 24px;
-      max-width: 900px;
-      margin: 0 auto;
-      gap: 28px;
-      animation: fadeIn 1s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-tag {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ink);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid var(--border);
-      padding: 10px 24px;
-      border-radius: 30px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      margin-bottom: 0;
-    }
-
-    em {
-      color: teal;
-      font-style: italic;
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .hero-title {
-      font-size: clamp(40px, 6vw, 64px);
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-top: 0;
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 20px);
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 600px;
-      margin-bottom: 12px;
-    }
-
-    /* ── CTA BUTTONS ── */
-    .cta-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .cta-primary {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-      text-decoration: none;
-      background: var(--accent);
-      border-radius: 12px;
-      padding: 16px 32px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(200, 169, 110, 0.3);
-    }
-
-    .cta-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(200, 169, 110, 0.4);
-    }
-
-    .cta-secondary {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-      text-decoration: none;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 32px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    }
-
-    .cta-secondary:hover {
-      border-color: var(--ink);
-      background: rgba(255, 255, 255, 0.9);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    /* Responsive styling */
-    @media (max-width: 768px) {
-      header {
-        padding: 16px 24px;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 260px;
-        height: 100vh;
-        background: var(--card);
-        flex-direction: column;
-        justify-content: center;
-        padding: 80px 24px 24px;
-        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
-        transition: right 0.4s ease;
-        z-index: 90;
-      }
-
-      .nav-links.active {
-        right: 0;
-      }
-
-      .nav-links .btn-ghost,
-      .nav-links .btn-solid {
-        width: 100%;
-        text-align: center;
-        padding: 14px 20px;
-      }
-
-      .hero {
-        padding: 60px 20px;
-      }
-
-      .cta-group {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-      }
-
-      .cta-primary,
-      .cta-secondary {
-        width: 100%;
-        text-align: center;
-      }
-    }
   </style>
-</head>
+  <body
+    class="min-h-screen bg-bg font-sans text-ink flex flex-col overflow-x-hidden"
+  >
+    <!-- HEADER -->
+    <header
+      class="bg-white/80 backdrop-blur-md border-b border-border px-12 py-4 flex items-center justify-between sticky top-0 z-10"
+    >
+      <a href="index.html" class="no-underline flex items-center">
+        <div class="logo-mark flex items-center gap-3">
+          <img
+            src="photos/my logo.webp"
+            alt="Rowland Chazima"
+            width="40"
+            class="rounded-lg"
+          />
+          <span
+            class="text-[13px] font-bold tracking-[0.15em] text-ink uppercase"
+            >Rowland's webpage</span
+          >
+        </div>
+      </a>
 
-<body>
-  <header>
-    <a href="index.html" class="logo-row">
-      <div class="logo-mark">
-        <img src="photos/my logo.webp" alt="Rowland Chazima" width="40" />
-        <span class="logo-text">Rowland's Webpage</span>
+      <nav class="nav-links flex items-center gap-4" id="navLinks">
+        <a
+          href="login.html"
+          class="btn-ghost text-[14px] font-semibold no-underline text-ink rounded-lg border border-border px-5 py-[10px] transition-all duration-300 bg-transparent"
+          >Login</a
+        >
+        <a
+          href="register.html"
+          class="btn-solid text-[14px] font-semibold text-white no-underline bg-ink rounded-lg px-5 py-[10px] transition-all duration-300 shadow-[0_4px_12px_rgba(26,23,20,0.15)]"
+          >Register</a
+        >
+      </nav>
+
+      <button
+        class="hamburger hidden flex-col gap-1.5 cursor-pointer bg-transparent border-none p-1 z-[100]"
+        id="hamburger"
+        aria-label="Toggle menu"
+      >
+        <span class="w-6 h-[2px] bg-ink"></span>
+        <span class="w-6 h-[2px] bg-ink"></span>
+        <span class="w-6 h-[2px] bg-ink"></span>
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="hero text-center flex flex-col items-center justify-center grow px-6 py-20 max-w-[900px] mx-auto gap-7"
+    >
+      <span
+        class="text-[14px] font-semibold text-ink tracking-[0.05em] uppercase bg-white/70 border border-border px-6 py-[10px] rounded-[30px] inline-flex items-center gap-2 shadow-sm"
+      >
+        Welcome.<em>Bienvenue</em>
+      </span>
+
+      <h1
+        class="text-[clamp(40px,6vw,64px)] font-serif font-bold text-ink leading-[1.1] tracking-[-0.02em]"
+      >
+        Feel free to login and register
+      </h1>
+      <p
+        class="text-[clamp(16px,2vw,20px)] text-muted leading-relaxed max-w-[600px] mb-3"
+      >
+        Create your account, fill in your profile, and join a growing community
+        of people on Rowland's platform.
+      </p>
+
+      <div class="cta-group flex gap-4 flex-wrap justify-center">
+        <a
+          href="register.html"
+          class="cta-primary text-[16px] font-semibold text-ink no-underline bg-accent px-8 py-4 rounded-xl transition-all duration-300 shadow-[0_8px_24px_rgba(200,169,110,0.3)]"
+          >Create an Account →</a
+        >
+        <a
+          href="login.html"
+          class="cta-secondary text-[16px] font-semibold text-ink no-underline bg-white border border-border px-8 py-4 rounded-xl transition-all duration-300 shadow-sm"
+          >I already have an account</a
+        >
       </div>
-    </a>
+    </section>
 
-    <nav class="nav-links">
-      <a href="login.html" class="btn-ghost">Login</a>
-      <a href="register.html" class="btn-solid">Register</a>
-    </nav>
+    <!-- JAVASCRIPT -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-  <section class="hero">
-    <span class="hero-tag">Welcome.<em>Bienvenue</em></span>
+      // HELL OF A MEDIA QUERY
+      const mq = matchMedia("(max-width: 768px)");
+      function applyMobileMenu(e) {
+        if (e.matches) {
+          hamburger.style.display = "block";
+          Object.assign(navLinks.style, {
+            position: "fixed",
+            top: 0,
+            right: "-100%",
+            width: "260px",
+            height: "100vh",
+            background: "#fff",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: "80px 24px 24px",
+            boxShadow: "-4px 0 15px rgba(0,0,0,0.05)",
+            zIndex: "90",
+          });
 
-    <h1 class="hero-title">
-      Feel free to login and register</h1>
+          nav -
+            links.querySelectorAll("a").forEach((a) => {
+              a.style.width = "100%";
+              a.style.textAlign = "center";
+              a.style.padding = "15px 20px";
+            });
+        } else {
+          hamburger.style.display = "none";
+          navLinks.removeAttribute("style");
+          navLinks.querySelectorAll("a").forEach((a) => {
+            a.removeAttribute("style");
+          });
+        }
+      }
+      mq.addEventListener("change", applyMobile);
+      applyMobile(mq);
 
-
-    <p class="hero-sub">
-      Create your account, fill in your profile, and join a growing community
-      of people on Rowland's platform.
-    </p>
-
-    <div class="cta-group">
-      <a href="register.html" class="cta-primary">Create an Account →</a>
-      <a href="login.html" class="cta-secondary">I already have an account</a>
-    </div>
-  </section>
-
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-  </script>
-</body>
-
+      navLinks.classList.contains("active") && (navLinks.style.right = "0");
+      hamburger.addEventListener("click", () => {
+        navLinks.style.right = navLinks.classList.contains("active")
+          ? "0"
+          : "-100%";
+      });
+    </script>
+  </body>
 </html>
